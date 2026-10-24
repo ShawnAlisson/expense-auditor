@@ -3,27 +3,29 @@ Team: <YOUR TEAM NAME>
 Task: Expense Auditor checks every line of an expense report against the written policy and receipts with Banyan Sapling, routes reject/request docs/escalate, and re-judges live when you attach the missing evidence.
 X: <X POST LINK>
 LinkedIn: <LINKEDIN POST LINK>
-Repo: <REPO LINK>
+Repo: https://github.com/ShawnAlisson/expense-auditor
 
 ## X post (tag @MubitLabs, attach docs/screenshot-fixed.png, and docs/screenshot.png as second image)
-An employee claimed mileage for driving to Manchester. Same day, they also claimed the train ticket for that trip.
+We built and used Expense Auditor on a sample expense report. For example, we included a mileage claim for driving to Manchester, and on the same day, a train ticket was also claimed for that trip. Sapling flagged this right away for inconsistent context (0.76), demonstrating its ability to spot duplicates and contradictions. 
 
-@MubitLabs Banyan Sapling flagged it: inconsistent_context, 0.76. It also rejected a GBP 195 hotel against a GBP 130 cap (0.93) and asked for the missing rate on a cropped invoice (0.91).
+Sapling flagged the inconsistency (inconsistent_context, 0.76), just as designed. It also correctly rejected a £195 hotel above the £130 cap (0.93), and kicked back a cropped invoice missing the nightly rate (0.91).
 
-Then attach the manager's approval and Sapling re-judges live: REJECT 0.93 -> leans supported 0.52. Where it's near 50/50, a human signs off, never auto-approve.
-Expense Auditor: every expense line is a claim, checked against policy + receipts.
-<REPO LINK>
+When we attach the manager's approval and it judges that line again. The hotel goes from reject at 0.93 to leaning supported at 0.52. That close, a person signs off. We don't let it approve those on its own.
+
+Expense Auditor checks each line against the policy and the receipts.
+https://github.com/ShawnAlisson/expense-auditor
 
 ## LinkedIn post (tag Mubit)
-Expense reports are a pile of small claims: "this hotel is within the cap," "this dinner had no alcohol," "this mileage was real." I built Expense Auditor for the Mubit x Night Shift Banyan Sapling side quest.
 
-Each line becomes a claim. Sapling checks it against the policy clause and the evidence (receipts, logs, dates) and returns one of four verdicts: approve, reject, request documents, or escalate a conflict.
+We built Expense Auditor for the Mubit x Night Shift side quest, working alongside Banyan Sapling. Expense reports are full of little details—like making sure a hotel stay is under the cap, checking there’s no wine on the dinner bill, and confirming that mileage claims are for real drives.
 
-On a synthetic 11-line report: rejected an over-cap hotel (0.93), wine on a dinner bill (0.92), a claim submitted 54 days late (0.78), asked for a cropped invoice's missing rate (0.91), and escalated mileage claimed for a trip already paid for by train (0.76).
+Sapling reads each line against the policy and the evidence you actually have, then approves it, rejects it, asks for a missing document, or escalates when two things disagree.
 
-Click "attach manager's approval" and Sapling re-judges the line live: reject at 0.93 becomes lean-supported at 0.52, so it goes to a person.
+We tried it on a made-up 11-line report. It rejected a £195 hotel against a £130 cap (0.93), wine on a client dinner (0.92), and a claim filed 54 days late (0.78). A cropped invoice with the rate cut off got sent back (0.91). Mileage to Manchester, on a day they also expensed the train, got escalated (0.76).
+
+Attach the manager's approval and Sapling looks at that line again straight away. The hotel drops from a reject at 0.93 to leaning supported at 0.52, which is close enough that someone should actually look at it.
 
 What I learned: on this research preview, Sapling's calibrated status was "unsure" on every line, and it sat near 50/50 on compliant lines. So the tool only acts automatically above 0.75 and sends the rest to a person with the model's lean attached. The README lists where it was and wasn't right.
 
-Repo: <REPO LINK>
-Mubit
+https://github.com/ShawnAlisson/expense-auditor
+@Mubit
