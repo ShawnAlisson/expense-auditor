@@ -14,7 +14,7 @@ class H(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_GET(self):
-        path = {"/": "web/index.html", "/report.json": "data/report.json", "/results.json": "data/results.json"}.get(self.path)
+        path = {"/": "web/index.html", "/report.json": "data/report.json", "/results.json": "data/results.json"}.get(self.path.split("?")[0])
         if not path or not os.path.exists(path):
             return self._send(404, b"{}")
         ctype = "text/html; charset=utf-8" if path.endswith(".html") else "application/json"

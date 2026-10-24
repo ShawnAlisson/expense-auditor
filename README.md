@@ -13,6 +13,16 @@ Sapling does the judging. The surrounding code only splits the report into claim
 
 ![screenshot](docs/screenshot.png)
 
+## Repair loop: watch the verdict flip
+
+Flagged lines offer the missing evidence as one click ("attach manager's written pre-approval", "upload the itemised receipt", "withdraw the duplicate mileage claim"). Sapling re-judges the line live and the card shows before and after:
+
+- E-02 hotel: `REJECT` (violation 0.93) → `HUMAN REVIEW` (supported 0.52) once the approval is on file
+- E-05 taxi: `REJECT` (violation 0.91) → `HUMAN REVIEW` (supported 0.50) once the receipt is uploaded
+- E-06 mileage: `ESCALATE` (inconsistent 0.76) → `REJECT` (violation 0.87) once the duplicate is withdrawn. The conflict is gone, so the claim is now a plain policy breach
+
+Fixed lines never reach auto-approve: Sapling tops out near 0.5 on `supported` here, so a person signs off. `?demo=fixed` applies all fixes automatically (`docs/screenshot-fixed.png`).
+
 ## Run it
 
 ```bash

@@ -41,7 +41,7 @@
         "generated_tokens": 0
       },
       "timing_ms": {
-        "model": 985.5988130002515
+        "model": 974.7899840003811
       }
     },
     "triage": {
@@ -91,7 +91,7 @@
         "generated_tokens": 0
       },
       "timing_ms": {
-        "model": 1018.5305580016575
+        "model": 1024.3666300011682
       }
     },
     "triage": {
@@ -99,6 +99,58 @@
       "tier": "auto",
       "lean": "violation",
       "confidence": 0.9284685492015341
+    },
+    "fixed": {
+      "sapling": {
+        "model": "banyan-sapling",
+        "release_stage": "research-preview",
+        "source_release_sha256": "245970b0e5b0b22d64c1434ee21dd221b1f211f06bda5465f8fc108f70cd5c3f",
+        "weights_sha256": "103a67f7a112589346c3e1090f5bca182d7fdafee85dfd43e67ac5d75eb04dd4",
+        "logits": [
+          5.19959831237793,
+          -9.865324974060059,
+          4.331573009490967,
+          -15.83043384552002
+        ],
+        "conformal_prediction_set": [
+          "supported",
+          "violation",
+          "insufficient_information",
+          "inconsistent_context"
+        ],
+        "prediction_set": [
+          "supported",
+          "violation",
+          "insufficient_information",
+          "inconsistent_context"
+        ],
+        "status": "unsure",
+        "raw_label": "supported",
+        "fallback_used": false,
+        "fallback_reason": null,
+        "status_provenance": "multiple_conformal_labels",
+        "empty_set_policy": "rounded_argmax",
+        "conformal_singleton": false,
+        "probabilities": {
+          "supported": 0.5216664214881331,
+          "violation": 0.02833239603296226,
+          "insufficient_information": 0.44106091814420784,
+          "inconsistent_context": 0.008940264334696727
+        },
+        "usage": {
+          "input_tokens": 122,
+          "generated_tokens": 0
+        },
+        "timing_ms": {
+          "model": 1011.6455580064212
+        }
+      },
+      "triage": {
+        "action": "HUMAN REVIEW",
+        "tier": "review",
+        "lean": "supported",
+        "confidence": 0.5216664214881331
+      }
     }
   },
   "E-03": {
@@ -143,7 +195,7 @@
         "generated_tokens": 0
       },
       "timing_ms": {
-        "model": 1031.0130469952128
+        "model": 1019.204639000236
       }
     },
     "triage": {
@@ -195,7 +247,7 @@
         "generated_tokens": 0
       },
       "timing_ms": {
-        "model": 1006.0235359997023
+        "model": 1009.7173419999308
       }
     },
     "triage": {
@@ -245,7 +297,7 @@
         "generated_tokens": 0
       },
       "timing_ms": {
-        "model": 1002.8535689998535
+        "model": 1056.2358680035686
       }
     },
     "triage": {
@@ -253,6 +305,58 @@
       "tier": "auto",
       "lean": "violation",
       "confidence": 0.9053753059610452
+    },
+    "fixed": {
+      "sapling": {
+        "model": "banyan-sapling",
+        "release_stage": "research-preview",
+        "source_release_sha256": "245970b0e5b0b22d64c1434ee21dd221b1f211f06bda5465f8fc108f70cd5c3f",
+        "weights_sha256": "103a67f7a112589346c3e1090f5bca182d7fdafee85dfd43e67ac5d75eb04dd4",
+        "logits": [
+          4.879194736480713,
+          -8.15157699584961,
+          4.244804859161377,
+          -14.218703269958496
+        ],
+        "conformal_prediction_set": [
+          "supported",
+          "violation",
+          "insufficient_information",
+          "inconsistent_context"
+        ],
+        "prediction_set": [
+          "supported",
+          "violation",
+          "insufficient_information",
+          "inconsistent_context"
+        ],
+        "status": "unsure",
+        "raw_label": "supported",
+        "fallback_used": false,
+        "fallback_reason": null,
+        "status_provenance": "multiple_conformal_labels",
+        "empty_set_policy": "rounded_argmax",
+        "conformal_singleton": false,
+        "probabilities": {
+          "supported": 0.5025271674392302,
+          "violation": 0.04044569019821741,
+          "insufficient_information": 0.44451383320817217,
+          "inconsistent_context": 0.012513309154380267
+        },
+        "usage": {
+          "input_tokens": 93,
+          "generated_tokens": 0
+        },
+        "timing_ms": {
+          "model": 987.811260005401
+        }
+      },
+      "triage": {
+        "action": "HUMAN REVIEW",
+        "tier": "review",
+        "lean": "supported",
+        "confidence": 0.5025271674392302
+      }
     }
   },
   "E-06": {
@@ -297,7 +401,7 @@
         "generated_tokens": 0
       },
       "timing_ms": {
-        "model": 1020.909369995934
+        "model": 1016.9540300048538
       }
     },
     "triage": {
@@ -305,6 +409,56 @@
       "tier": "auto",
       "lean": "inconsistent_context",
       "confidence": 0.7638846298948367
+    },
+    "fixed": {
+      "sapling": {
+        "model": "banyan-sapling",
+        "release_stage": "research-preview",
+        "source_release_sha256": "245970b0e5b0b22d64c1434ee21dd221b1f211f06bda5465f8fc108f70cd5c3f",
+        "weights_sha256": "103a67f7a112589346c3e1090f5bca182d7fdafee85dfd43e67ac5d75eb04dd4",
+        "logits": [
+          -5.901590824127197,
+          10.129629135131836,
+          -1.6551283597946167,
+          -17.714588165283203
+        ],
+        "conformal_prediction_set": [
+          "supported",
+          "violation",
+          "insufficient_information"
+        ],
+        "prediction_set": [
+          "supported",
+          "violation",
+          "insufficient_information"
+        ],
+        "status": "unsure",
+        "raw_label": "violation",
+        "fallback_used": false,
+        "fallback_reason": null,
+        "status_provenance": "multiple_conformal_labels",
+        "empty_set_policy": "rounded_argmax",
+        "conformal_singleton": false,
+        "probabilities": {
+          "supported": 0.03910840117986401,
+          "violation": 0.8680135365014423,
+          "insufficient_information": 0.08889471651084262,
+          "inconsistent_context": 0.003983345807850872
+        },
+        "usage": {
+          "input_tokens": 114,
+          "generated_tokens": 0
+        },
+        "timing_ms": {
+          "model": 1011.3692749946495
+        }
+      },
+      "triage": {
+        "action": "REJECT",
+        "tier": "auto",
+        "lean": "violation",
+        "confidence": 0.8680135365014423
+      }
     }
   },
   "E-07": {
@@ -349,7 +503,7 @@
         "generated_tokens": 0
       },
       "timing_ms": {
-        "model": 1017.6266399939777
+        "model": 1018.468951995601
       }
     },
     "triage": {
@@ -401,7 +555,7 @@
         "generated_tokens": 0
       },
       "timing_ms": {
-        "model": 1010.3636950007058
+        "model": 1003.2358769967686
       }
     },
     "triage": {
@@ -451,7 +605,7 @@
         "generated_tokens": 0
       },
       "timing_ms": {
-        "model": 1037.5714970068657
+        "model": 1011.1844320053933
       }
     },
     "triage": {
@@ -503,7 +657,7 @@
         "generated_tokens": 0
       },
       "timing_ms": {
-        "model": 1004.2725679959403
+        "model": 993.4450519940583
       }
     },
     "triage": {
@@ -555,7 +709,7 @@
         "generated_tokens": 0
       },
       "timing_ms": {
-        "model": 1007.1079089975683
+        "model": 999.546074999671
       }
     },
     "triage": {

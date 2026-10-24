@@ -10,7 +10,11 @@ report = json.load(open("data/report.json"))
 
 def run(line):
     res = verify(line["policy"], line["evidence"], line["claim"])
-    return line["id"], {"sapling": res, "triage": triage(res)}
+    out = {"sapling": res, "triage": triage(res)}
+    if "fix" in line:  # repair loop: re-judge after the missing evidence is attached
+        fx = verify(line["policy"], line["fix"]["evidence"], line["claim"])
+        out["fixed"] = {"sapling": fx, "triage": triage(fx)}
+    return line["id"], out
 
 
 with cf.ThreadPoolExecutor(len(report["lines"])) as ex:

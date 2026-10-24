@@ -24,7 +24,11 @@
       "source": "Hotel Gotham Manchester invoice, 1 night",
       "policy": "The nightly hotel cap outside London is GBP 130. Rates above the cap are not reimbursable unless the manager approved the exception in writing before the stay.",
       "evidence": "Hotel invoice E-02 shows a Manchester rate of GBP 195 per night. No manager approval was recorded.",
-      "claim": "Hotel expense E-02 is permitted."
+      "claim": "Hotel expense E-02 is permitted.",
+      "fix": {
+        "label": "Attach manager's written pre-approval",
+        "evidence": "Hotel invoice E-02 shows a Manchester rate of GBP 195 per night. The manager approved this exception in writing before the stay."
+      }
     },
     {
       "id": "E-03",
@@ -57,7 +61,11 @@
       "source": "Card statement line only: MANCHESTER CABS 34.00",
       "policy": "Any expense over GBP 25 requires an itemised receipt.",
       "evidence": "Taxi expense E-05 is GBP 34. No receipt has been provided.",
-      "claim": "Taxi expense E-05 is permitted."
+      "claim": "Taxi expense E-05 is permitted.",
+      "fix": {
+        "label": "Upload the itemised receipt",
+        "evidence": "Taxi expense E-05 is GBP 34. An itemised receipt has been provided."
+      }
     },
     {
       "id": "E-06",
@@ -68,7 +76,11 @@
       "source": "Mileage log says 120 miles by personal car, same day as the rail ticket E-01",
       "policy": "Mileage is reimbursable only for a journey made by personal car.",
       "evidence": "Rail ticket E-01 shows the traveller took the train from London to Manchester on 14 Oct. The mileage log E-06 shows the traveller drove the same journey on the same day.",
-      "claim": "Mileage expense E-06 is permitted."
+      "claim": "Mileage expense E-06 is permitted.",
+      "fix": {
+        "label": "Withdraw the duplicate mileage claim",
+        "evidence": "Rail ticket E-01 shows the traveller took the train from London to Manchester on 14 Oct. The mileage log E-06 was withdrawn and the mileage claim was removed."
+      }
     },
     {
       "id": "E-07",

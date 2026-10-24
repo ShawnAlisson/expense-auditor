@@ -44,6 +44,22 @@ details{margin-top:10px}summary{cursor:pointer;color:var(--mute);font-size:13px}
 .meta{font-size:12px;color:var(--mute)}
 .spin{display:inline-block;width:12px;height:12px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:s .7s linear infinite;vertical-align:-2px}
 @keyframes s{to{transform:rotate(360deg)}}
+
+.hero{background:var(--accent);color:#fff;border-radius:14px;padding:22px 24px;margin-bottom:18px}
+.hero small{opacity:.8;text-transform:uppercase;letter-spacing:.07em;font-size:12px}
+.hero b{display:block;font-size:44px;line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin:4px 0}
+.hero p{margin:0;opacity:.9}
+.stack{display:flex;height:12px;border-radius:6px;overflow:hidden;margin:16px 0 8px;background:rgba(255,255,255,.2)}
+.stack i{display:block;transition:width .5s}
+.leg{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px}
+.leg span:before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--c);margin-right:5px}
+.fix{margin-top:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fix button{border-color:var(--accent);color:var(--accent);font-weight:600;background:transparent}
+.flip{margin-top:10px;padding:8px 12px;border-radius:8px;background:var(--bg);font-size:13.5px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.flip s{opacity:.55}
+.flip .arrow{color:var(--mute)}
+.card.flash{animation:fl 1.2s}
+@keyframes fl{0%{box-shadow:0 0 0 0 var(--accent)}40%{box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 30%,transparent)}100%{box-shadow:0 0 0 0 transparent}}
 footer{color:var(--mute);font-size:12.5px;margin-top:26px}
 </style>
 </head>
@@ -55,7 +71,7 @@ footer{color:var(--mute);font-size:12.5px;margin-top:26px}
   <button class="primary" id="run">Run audit with Banyan Sapling</button>
   <span class="mode" id="mode"></span>
 </div>
-<div class="sum" id="sum"></div>
+<div class="hero" id="hero"></div>
 <div id="cards"></div>
 <footer>
 Every line is one claim ("this expense is permitted") checked by Banyan Sapling against the policy clause and the evidence on file. Sapling returns a label and probabilities in one forward pass, with no generation.
@@ -78,6 +94,7 @@ function triage(r){const l=r.raw_label,p=r.probabilities[l];
 function card(l){return `<div class="card pending" id="c-${l.id}">
  <div class="head"><span class="t">${l.id} · ${esc(l.description)}<small>${l.date} · ${esc(l.source)}</small></span><span class="amt">${gbp(l.amount)}</span></div>
  <div class="row" id="r-${l.id}"><span class="meta"><span class="spin"></span> waiting for Sapling…</span></div>
+ ${l.fix?`<div class="fix" id="f-${l.id}"></div>`:""}
  <details><summary>Policy, evidence and claim sent to Sapling (editable)</summary><div class="io">
   <label>Policy</label><textarea rows="2" data-k="policy">${esc(l.policy)}</textarea>
   <label>Evidence</label><textarea rows="2" data-k="evidence">${esc(l.evidence)}</textarea>
@@ -90,23 +107,37 @@ function fill(l,res){
   const ms=res.timing_ms&&res.timing_ms.model?` · ${Math.round(res.timing_ms.model)} ms`:"";
   $("#r-"+l.id).innerHTML=`<span class="pill" style="background:${t.color}">${t.action}</span>
    <span class="lean">${t.auto?"":"leans "+NAMES[t.lean]+" · "}calibrated: ${res.status}${ms}</span><div class="probs">${bars}</div>`;
-  l._t=t;summary()}
+  l._t=t;summary();
+  if(l.fix&&!l._fixed){$("#f-"+l.id).innerHTML=`<button data-fix="${l.id}">+ ${esc(l.fix.label)}</button><span class="meta">Sapling will re-judge the line with the new evidence.</span>`}}
+
+async function applyFix(l){
+  const before=l._t,f=$("#f-"+l.id);
+  f.innerHTML='<span class="meta"><span class="spin"></span> re-judging with new evidence…</span>';
+  const res=await check(l,{evidence:l.fix.evidence},"fixed");
+  l._fixed=true;fill(l,res);const a=l._t;
+  $("#f-"+l.id).innerHTML=`<div class="flip"><span class="pill" style="background:${before.color}">${before.action}</span> <s>${(before.p*100).toFixed(0)}% ${NAMES[before.lean]}</s><span class="arrow">→ after “${esc(l.fix.label.toLowerCase())}” →</span><span class="pill" style="background:${a.color}">${a.action}</span> <b>${(a.p*100).toFixed(0)}% ${NAMES[a.lean]}</b></div>`;
+  const c=$("#c-"+l.id);c.classList.add("flash");setTimeout(()=>c.classList.remove("flash"),1300)}
 
 function summary(){
   const tot={};report.lines.forEach(l=>{if(l._t)tot[l._t.action]=(tot[l._t.action]||0)+l.amount});
   const all=report.lines.reduce((a,l)=>a+l.amount,0);
-  const keys=["APPROVE","REJECT","REQUEST DOCS","ESCALATE","HUMAN REVIEW"];
-  $("#sum").innerHTML=`<div><span>Claimed</span><b>${gbp(all)}</b></div>`+keys.filter(k=>tot[k]).map(k=>`<div><span>${k}</span><b>${gbp(tot[k])}</b></div>`).join("")}
+  const stop=(tot["REJECT"]||0)+(tot["ESCALATE"]||0)+(tot["REQUEST DOCS"]||0);
+  const cols={"REJECT":"#ff8f84","ESCALATE":"#c9a0ff","REQUEST DOCS":"#ffc266","HUMAN REVIEW":"#b8c0cc","APPROVE":"#7fe0ae"};
+  const keys=Object.keys(cols).filter(k=>tot[k]);
+  $("#hero").innerHTML=`<small>Stopped before payment, by Banyan Sapling</small><b>${gbp(stop)}</b>
+   <p>of ${gbp(all)} claimed in ${report.report_id}. ${gbp(tot["HUMAN REVIEW"]||0)} was too close to call and goes to a person.</p>
+   <div class="stack">${keys.map(k=>`<i style="width:${tot[k]/all*100}%;background:${cols[k]}"></i>`).join("")}</div>
+   <div class="leg">${keys.map(k=>`<span style="--c:${cols[k]}">${k} ${gbp(tot[k])}</span>`).join("")}</div>`}
 
-async function check(l,over){
+async function check(l,over,which){
   const body={policy:over?.policy??l.policy,evidence:over?.evidence??l.evidence,claim:over?.claim??l.claim};
   if(live){try{const r=await fetch("/api/verify",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
     if(r.ok){const j=await r.json();if(j.probabilities)return j}else if(r.status!==404&&r.status!==405&&r.status!==501)throw 0}catch(e){}
     live=false;$("#mode").textContent="No backend reachable, showing a recorded Sapling run."}
-  return cache[l.id].sapling}
+  return which==='fixed'?cache[l.id].fixed.sapling:cache[l.id].sapling}
 
 async function runAll(){
-  $("#run").disabled=true;report.lines.forEach(l=>{l._t=null;$("#c-"+l.id).classList.add("pending");$("#r-"+l.id).innerHTML='<span class="meta"><span class="spin"></span> asking Sapling…</span>'});
+  $("#run").disabled=true;report.lines.forEach(l=>{l._t=null;l._fixed=false;$("#c-"+l.id).classList.add("pending");$("#r-"+l.id).innerHTML='<span class="meta"><span class="spin"></span> asking Sapling…</span>'});
   summary();
   await Promise.all(report.lines.map(async l=>{const res=await check(l);fill(l,res)}));
   $("#run").disabled=false;if(live)$("#mode").textContent="Live: every verdict above came from the Sapling endpoint just now."}
@@ -116,13 +147,14 @@ async function runAll(){
   try{cache=await (await fetch("results.json")).json()}catch(e){cache={}}
   $("#meta").textContent=`${report.employee} · ${report.report_id} · ${report.trip} · submitted ${report.submitted}`;
   $("#cards").innerHTML=report.lines.map(card).join("");
-  $("#cards").addEventListener("click",async e=>{const id=e.target.dataset.re;if(!id)return;
+  $("#cards").addEventListener("click",async e=>{if(e.target.dataset.fix)return applyFix(report.lines.find(x=>x.id===e.target.dataset.fix));const id=e.target.dataset.re;if(!id)return;
     const l=report.lines.find(x=>x.id===id),c=$("#c-"+id),o={};c.querySelectorAll("textarea").forEach(t=>o[t.dataset.k]=t.value);
     $("#r-"+id).innerHTML='<span class="meta"><span class="spin"></span> asking Sapling…</span>';
     if(!live){$("#mode").textContent="Editing needs the live backend (python3 server.py).";fill(l,cache[id].sapling);return}
     fill(l,await check(l,o))});
   $("#run").onclick=runAll;
   if(cache&&Object.keys(cache).length){report.lines.forEach(l=>cache[l.id]&&fill(l,cache[l.id].sapling));$("#mode").textContent="Showing the last recorded run. Press the button to re-run live."}
+  if(location.search.includes('demo=fixed'))for(const l of report.lines)if(l.fix)await applyFix(l);
 })();
 </script>
 </body>
