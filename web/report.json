@@ -13,7 +13,9 @@
       "source": "Itemised e-ticket, Avanti West Coast, Euston to Piccadilly return, 14 Oct, Standard Class",
       "policy": "Rail travel is permitted in standard or economy class only. Higher classes require written VP pre-approval.",
       "evidence": "Rail ticket E-01 was booked in Standard Class.",
-      "claim": "Rail ticket E-01 conformed to the travel policy."
+      "claim": "Rail ticket E-01 conformed to the travel policy.",
+      "note": "Standard Class ticket",
+      "short": "Rail"
     },
     {
       "id": "E-02",
@@ -28,7 +30,9 @@
       "fix": {
         "label": "Attach manager's written pre-approval",
         "evidence": "Hotel invoice E-02 shows a Manchester rate of GBP 195 per night. The manager approved this exception in writing before the stay."
-      }
+      },
+      "note": "\u00a3195 a night, cap is \u00a3130, no approval",
+      "short": "Hotel"
     },
     {
       "id": "E-03",
@@ -39,7 +43,9 @@
       "source": "Itemised receipt: salmon, salad, sparkling water, dessert",
       "policy": "A dinner on business travel is permitted up to GBP 60 per person. Alcohol is prohibited.",
       "evidence": "Dinner E-03 cost GBP 48.20, which is under GBP 60. One person dined. The bill has no alcohol.",
-      "claim": "Dinner E-03 is permitted."
+      "claim": "Dinner E-03 is permitted.",
+      "note": "\u00a348.20, under \u00a360, no alcohol",
+      "short": "Dinner"
     },
     {
       "id": "E-04",
@@ -50,7 +56,9 @@
       "source": "Itemised receipt: ribeye, two glasses of Malbec, side",
       "policy": "A dinner on business travel is permitted up to GBP 60 per person. Alcohol is prohibited.",
       "evidence": "Dinner receipt E-04 is for one person and totals GBP 71.40. The bill includes two glasses of wine.",
-      "claim": "Dinner expense E-04 is permitted."
+      "claim": "Dinner expense E-04 is permitted.",
+      "note": "Includes wine, alcohol is not reimbursable",
+      "short": "Dinner"
     },
     {
       "id": "E-05",
@@ -65,7 +73,9 @@
       "fix": {
         "label": "Upload the itemised receipt",
         "evidence": "Taxi expense E-05 is GBP 34. An itemised receipt has been provided."
-      }
+      },
+      "note": "\u00a334 with no itemised receipt",
+      "short": "Taxi"
     },
     {
       "id": "E-06",
@@ -80,7 +90,9 @@
       "fix": {
         "label": "Withdraw the duplicate mileage claim",
         "evidence": "Rail ticket E-01 shows the traveller took the train from London to Manchester on 14 Oct. The mileage log E-06 was withdrawn and the mileage claim was removed."
-      }
+      },
+      "note": "Drove, but also claimed the train for the same trip",
+      "short": "Mileage"
     },
     {
       "id": "E-07",
@@ -91,7 +103,9 @@
       "source": "App receipt, Piccadilly station to hotel, 23:10",
       "policy": "Taxis are reimbursable when public transport is unavailable, which includes any journey starting after 22:00.",
       "evidence": "Taxi receipt E-07 shows a journey starting at 23:10.",
-      "claim": "Taxi expense E-07 is permitted."
+      "claim": "Taxi expense E-07 is permitted.",
+      "note": "Taxi after 22:00 is allowed",
+      "short": "Taxi"
     },
     {
       "id": "E-08",
@@ -102,7 +116,9 @@
       "source": "Itemised receipt, 2 covers, GBP 118.00; attendees: Priya Nair, Tom Eccles (Halden Logistics); purpose: renewal pricing",
       "policy": "Client entertainment is permitted up to GBP 80 per head when attendee names and business purpose are recorded.",
       "evidence": "Lunch E-08 cost GBP 59 per head for 2 attendees. Both attendee names and the business purpose are recorded.",
-      "claim": "Client lunch E-08 conformed to the entertainment policy."
+      "claim": "Client lunch E-08 conformed to the entertainment policy.",
+      "note": "\u00a359 a head, names and purpose recorded",
+      "short": "Client lunch"
     },
     {
       "id": "E-09",
@@ -113,7 +129,9 @@
       "source": "Invoice dated 27 Aug 2026, report submitted 20 Oct 2026",
       "policy": "Expenses must be submitted within 30 days of the expense date. Later claims are not reimbursable.",
       "evidence": "Expense E-09 is dated 27 Aug 2026 and was submitted on 20 Oct 2026.",
-      "claim": "Conference expense E-09 is permitted."
+      "claim": "Conference expense E-09 is permitted.",
+      "note": "Claimed 54 days late, limit is 30",
+      "short": "Conference"
     },
     {
       "id": "E-10",
@@ -124,7 +142,9 @@
       "source": "NCP Manchester Piccadilly, 6 hours",
       "policy": "Reimbursable expense types are rail, hotels, meals, taxis, client entertainment and mileage.",
       "evidence": "Expense E-10 is a car park charge of GBP 18. The policy does not mention parking.",
-      "claim": "Parking expense E-10 is permitted."
+      "claim": "Parking expense E-10 is permitted.",
+      "note": "Parking is not a covered expense",
+      "short": "Parking"
     },
     {
       "id": "E-11",
@@ -135,7 +155,9 @@
       "source": "Cropped invoice scan, rate not visible",
       "policy": "The nightly hotel cap outside London is GBP 130. Rates above the cap are not reimbursable.",
       "evidence": "Hotel invoice E-11 is for one night in Leeds. The copy supplied is cropped and does not show the room rate.",
-      "claim": "Hotel expense E-11 is permitted."
+      "claim": "Hotel expense E-11 is permitted.",
+      "note": "Invoice copy is cropped, rate not visible",
+      "short": "Hotel"
     }
   ]
 }

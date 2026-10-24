@@ -5,156 +5,102 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Expense Auditor</title>
 <style>
-:root{--bg:#f6f5f1;--card:#fff;--ink:#1c1b19;--mute:#6c6a63;--line:#e4e1d8;
---ok:#16794a;--bad:#c0362c;--warn:#b26a00;--purple:#7b3fc4;--rev:#4b5563;--accent:#1f4d3a}
-@media(prefers-color-scheme:dark){:root{--bg:#141412;--card:#1d1d1a;--ink:#efede6;--mute:#9a978d;--line:#2e2d29;
---ok:#4cc58a;--bad:#ff7a6e;--warn:#e8a43a;--purple:#b88af0;--rev:#9aa3b2;--accent:#6fd4a6}}
+:root{--bg:#fafaf8;--card:#fff;--ink:#1c1b19;--mute:#76736a;--line:#ebe9e2;--ok:#16794a;--bad:#c0362c;--warn:#b26a00;--pur:#7b3fc4;--rev:#5b6472;--acc:#1f4d3a}
+@media(prefers-color-scheme:dark){:root{--bg:#141412;--card:#1d1d1a;--ink:#efede6;--mute:#9a978d;--line:#2e2d29;--ok:#2f9d68;--bad:#d9564b;--warn:#c98a1f;--pur:#9a63d9;--rev:#6b7587;--acc:#6fd4a6}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-main{max-width:980px;margin:0 auto;padding:28px 16px 64px}
-h1{font-size:26px;margin:0 0 2px;letter-spacing:-.01em}
-.sub{color:var(--mute);margin:0 0 18px}
-.bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
-button{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px}
-button.primary{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
-button:disabled{opacity:.55;cursor:default}
-.mode{font-size:12.5px;color:var(--mute)}
-.sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:22px}
-.sum div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
-.sum b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
-.sum span{font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.05em}
-.card{background:var(--card);border:1px solid var(--line);border-left-width:5px;border-radius:10px;padding:14px 16px;margin-bottom:12px}
-.card.pending{border-left-color:var(--line)}
-.head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
-.head .t{font-weight:600}
-.head .t small{color:var(--mute);font-weight:400;margin-left:6px}
-.amt{font-variant-numeric:tabular-nums;font-weight:600}
-.row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:10px}
-.pill{display:inline-block;color:#fff;font-weight:700;font-size:12px;letter-spacing:.06em;padding:4px 11px;border-radius:99px}
-.lean{font-size:13px;color:var(--mute)}
-.probs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;flex:1;min-width:280px}
-.p{font-size:11.5px;color:var(--mute)}
-.p i{display:block;height:6px;border-radius:3px;background:var(--line);margin-top:3px;overflow:hidden}
-.p i u{display:block;height:100%;background:var(--mute)}
-.p.top{color:var(--ink);font-weight:600}.p.top i u{background:var(--accent)}
-details{margin-top:10px}summary{cursor:pointer;color:var(--mute);font-size:13px}
-.io{display:grid;gap:8px;margin-top:8px}
-.io label{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--mute)}
-.io textarea{width:100%;font:13.5px/1.45 inherit;font-family:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:7px 9px;resize:vertical}
-.meta{font-size:12px;color:var(--mute)}
-.spin{display:inline-block;width:12px;height:12px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:s .7s linear infinite;vertical-align:-2px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+main{max-width:720px;margin:0 auto;padding:40px 16px 56px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+h1{font-size:15px;font-weight:600;margin:0;color:var(--mute)}
+button{font:inherit;font-size:14px;cursor:pointer;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:6px 12px}
+button.primary{background:var(--acc);border-color:var(--acc);color:#fff}
+button:disabled{opacity:.5}
+.big{font-size:40px;font-weight:700;letter-spacing:-.02em;line-height:1.15;margin:18px 0 4px}
+.big span{color:var(--bad)}
+.sub{color:var(--mute);margin:0 0 26px}
+.row{display:grid;grid-template-columns:116px 1fr auto;gap:4px 14px;align-items:center;padding:13px 0;border-top:1px solid var(--line);cursor:pointer}
+.row:last-of-type{border-bottom:1px solid var(--line)}
+.pill{justify-self:start;color:#fff;font-weight:700;font-size:11.5px;letter-spacing:.05em;padding:4px 10px;border-radius:99px;white-space:nowrap}
+.what b{font-weight:600}
+.what div{color:var(--mute);font-size:14px}
+.amt{font-variant-numeric:tabular-nums;font-weight:600;text-align:right}
+.amt small{display:block;color:var(--mute);font-weight:400;font-size:12px}
+.extra{grid-column:1/-1;display:none;font-size:13px;color:var(--mute);padding:6px 0 2px}
+.row.open .extra{display:block}
+.extra p{margin:4px 0}.extra b{color:var(--ink)}
+.fix{grid-column:2/-1;font-size:13.5px}
+.fix button{border-color:var(--acc);color:var(--acc);font-weight:600;background:transparent;padding:4px 10px;font-size:13px}
+.flip{color:var(--ink)}.flip s{color:var(--mute)}
+.spin{display:inline-block;width:11px;height:11px;border:2px solid var(--line);border-top-color:var(--acc);border-radius:50%;animation:s .7s linear infinite;vertical-align:-1px}
 @keyframes s{to{transform:rotate(360deg)}}
-
-.hero{background:var(--accent);color:#fff;border-radius:14px;padding:22px 24px;margin-bottom:18px}
-.hero small{opacity:.8;text-transform:uppercase;letter-spacing:.07em;font-size:12px}
-.hero b{display:block;font-size:44px;line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin:4px 0}
-.hero p{margin:0;opacity:.9}
-.stack{display:flex;height:12px;border-radius:6px;overflow:hidden;margin:16px 0 8px;background:rgba(255,255,255,.2)}
-.stack i{display:block;transition:width .5s}
-.leg{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px}
-.leg span:before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--c);margin-right:5px}
-.fix{margin-top:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.fix button{border-color:var(--accent);color:var(--accent);font-weight:600;background:transparent}
-.flip{margin-top:10px;padding:8px 12px;border-radius:8px;background:var(--bg);font-size:13.5px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.flip s{opacity:.55}
-.flip .arrow{color:var(--mute)}
-.card.flash{animation:fl 1.2s}
-@keyframes fl{0%{box-shadow:0 0 0 0 var(--accent)}40%{box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 30%,transparent)}100%{box-shadow:0 0 0 0 transparent}}
-footer{color:var(--mute);font-size:12.5px;margin-top:26px}
+.foot{color:var(--mute);font-size:13px;margin-top:22px}
+@media(max-width:520px){.row{grid-template-columns:1fr auto}.pill{grid-column:1/-1}.fix{grid-column:1/-1}}
 </style>
 </head>
 <body>
 <main>
-<h1>Expense Auditor</h1>
-<p class="sub" id="meta"></p>
-<div class="bar">
-  <button class="primary" id="run">Run audit with Banyan Sapling</button>
-  <span class="mode" id="mode"></span>
-</div>
-<div class="hero" id="hero"></div>
-<div id="cards"></div>
-<footer>
-Every line is one claim ("this expense is permitted") checked by Banyan Sapling against the policy clause and the evidence on file. Sapling returns a label and probabilities in one forward pass, with no generation.
-We act automatically only when the top probability is at least 75%. Below that, the line goes to a person with Sapling's lean attached. Sapling's own calibrated status is shown as-is; it is conservative on this preview model.
-</footer>
+<div class="top"><h1 id="meta"></h1><div><span class="foot" id="mode" style="margin-right:8px"></span><button class="primary" id="run">Run live audit</button></div></div>
+<div class="big" id="big"></div>
+<p class="sub" id="sub"></p>
+<div id="rows"></div>
+<p class="foot">Each expense is a claim. Banyan Sapling checks it against the policy and the receipts and answers in one pass. When it is not at least 75% sure, a person decides. Tap a row for the details.</p>
 </main>
 <script>
-const LABELS={supported:["APPROVE","var(--ok)"],violation:["REJECT","var(--bad)"],insufficient_information:["REQUEST DOCS","var(--warn)"],inconsistent_context:["ESCALATE","var(--purple)"]};
-const NAMES={supported:"supported",violation:"violation",insufficient_information:"insufficient info",inconsistent_context:"inconsistent"};
-const ORDER=["supported","violation","insufficient_information","inconsistent_context"];
-const CONF=0.75;
+const L={supported:["APPROVE","var(--ok)"],violation:["REJECT","var(--bad)"],insufficient_information:["REQUEST DOCS","var(--warn)"],inconsistent_context:["ESCALATE","var(--pur)"]};
+const NM={supported:"supported",violation:"violation",insufficient_information:"insufficient info",inconsistent_context:"inconsistent"};
+const KEYS=["supported","violation","insufficient_information","inconsistent_context"];
+const RANK={"REJECT":0,"ESCALATE":1,"REQUEST DOCS":2,"HUMAN REVIEW":3,"APPROVE":4};
 let report,cache,live=true;
-const $=s=>document.querySelector(s);
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const gbp=n=>"£"+n.toLocaleString("en-GB",{minimumFractionDigits:2,maximumFractionDigits:2});
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const gbp=n=>"£"+n.toLocaleString("en-GB",{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2});
+function tri(r){const l=r.raw_label,p=r.probabilities[l];return p>=.75?{a:L[l][0],c:L[l][1],lean:l,p}:{a:"HUMAN REVIEW",c:"var(--rev)",lean:l,p}}
 
-function triage(r){const l=r.raw_label,p=r.probabilities[l];
-  return p>=CONF?{action:LABELS[l][0],color:LABELS[l][1],lean:l,p,auto:true}:{action:"HUMAN REVIEW",color:"var(--rev)",lean:l,p,auto:false}}
-
-function card(l){return `<div class="card pending" id="c-${l.id}">
- <div class="head"><span class="t">${l.id} · ${esc(l.description)}<small>${l.date} · ${esc(l.source)}</small></span><span class="amt">${gbp(l.amount)}</span></div>
- <div class="row" id="r-${l.id}"><span class="meta"><span class="spin"></span> waiting for Sapling…</span></div>
- ${l.fix?`<div class="fix" id="f-${l.id}"></div>`:""}
- <details><summary>Policy, evidence and claim sent to Sapling (editable)</summary><div class="io">
-  <label>Policy</label><textarea rows="2" data-k="policy">${esc(l.policy)}</textarea>
-  <label>Evidence</label><textarea rows="2" data-k="evidence">${esc(l.evidence)}</textarea>
-  <label>Claim</label><textarea rows="1" data-k="claim">${esc(l.claim)}</textarea>
-  <div><button data-re="${l.id}">Re-check this line</button></div></div></details></div>`}
+function rowHTML(l){return `<div class="row" id="r-${l.id}"><span class="pill" style="background:var(--line);color:var(--mute)">…</span>
+ <span class="what"><b>${esc(l.short)}</b><div>${esc(l.note)}</div></span><span class="amt">${gbp(l.amount)}<small id="p-${l.id}"></small></span>
+ <div class="fix" id="f-${l.id}"></div>
+ <div class="extra" id="x-${l.id}"></div></div>`}
 
 function fill(l,res){
-  const t=triage(res),c=$("#c-"+l.id);c.classList.remove("pending");c.style.borderLeftColor=t.color;
-  const bars=ORDER.map(k=>{const v=res.probabilities[k];return `<div class="p ${k===res.raw_label?"top":""}">${NAMES[k]} ${(v*100).toFixed(0)}%<i><u style="width:${v*100}%"></u></i></div>`}).join("");
-  const ms=res.timing_ms&&res.timing_ms.model?` · ${Math.round(res.timing_ms.model)} ms`:"";
-  $("#r-"+l.id).innerHTML=`<span class="pill" style="background:${t.color}">${t.action}</span>
-   <span class="lean">${t.auto?"":"leans "+NAMES[t.lean]+" · "}calibrated: ${res.status}${ms}</span><div class="probs">${bars}</div>`;
-  l._t=t;summary();
-  if(l.fix&&!l._fixed){$("#f-"+l.id).innerHTML=`<button data-fix="${l.id}">+ ${esc(l.fix.label)}</button><span class="meta">Sapling will re-judge the line with the new evidence.</span>`}}
+  const t=tri(res);l._t=t;l._res=res;const r=$("#r-"+l.id);
+  r.querySelector(".pill").outerHTML=`<span class="pill" style="background:${t.c}">${t.a}</span>`;
+  $("#p-"+l.id).textContent=t.a==="HUMAN REVIEW"?`${(t.p*100).toFixed(0)}% ${NM[t.lean]}`:`${(t.p*100).toFixed(0)}% sure`;
+  $("#x-"+l.id).innerHTML=`<p><b>Policy:</b> ${esc(l.policy)}</p><p><b>Evidence:</b> ${esc(l.evidence)}</p><p><b>Claim:</b> ${esc(l.claim)}</p>
+   <p><b>Sapling:</b> ${KEYS.map(k=>`${NM[k]} ${(res.probabilities[k]*100).toFixed(0)}%`).join(" · ")} · calibrated status: ${res.status}</p>`;
+  if(l.fix&&!l._fixed)$("#f-"+l.id).innerHTML=`<button data-fix="${l.id}">+ ${esc(l.fix.label)}</button>`;
+  head()}
+
+function head(){
+  let all=0,stop=0,rev=0;report.lines.forEach(l=>{all+=l.amount;if(l._t){if(["REJECT","ESCALATE","REQUEST DOCS"].includes(l._t.a))stop+=l.amount;if(l._t.a==="HUMAN REVIEW")rev+=l.amount}});
+  $("#big").innerHTML=`<span>${gbp(stop)}</span> of ${gbp(all)} stopped before payment`;
+  $("#sub").textContent=`${report.employee}'s trip report. ${gbp(rev)} is too close to call and goes to a person.`}
+
+async function check(l,evidence,which){
+  if(live){try{const r=await fetch("/api/verify",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({policy:l.policy,evidence:evidence??l.evidence,claim:l.claim})});
+    if(r.ok){const j=await r.json();if(j.probabilities)return j}else if(![404,405,501].includes(r.status))throw 0}catch(e){}
+    live=false;$("#mode").textContent="Showing a recorded run"}
+  return which==="fixed"?cache[l.id].fixed.sapling:cache[l.id].sapling}
 
 async function applyFix(l){
-  const before=l._t,f=$("#f-"+l.id);
-  f.innerHTML='<span class="meta"><span class="spin"></span> re-judging with new evidence…</span>';
-  const res=await check(l,{evidence:l.fix.evidence},"fixed");
-  l._fixed=true;fill(l,res);const a=l._t;
-  $("#f-"+l.id).innerHTML=`<div class="flip"><span class="pill" style="background:${before.color}">${before.action}</span> <s>${(before.p*100).toFixed(0)}% ${NAMES[before.lean]}</s><span class="arrow">→ after “${esc(l.fix.label.toLowerCase())}” →</span><span class="pill" style="background:${a.color}">${a.action}</span> <b>${(a.p*100).toFixed(0)}% ${NAMES[a.lean]}</b></div>`;
-  const c=$("#c-"+l.id);c.classList.add("flash");setTimeout(()=>c.classList.remove("flash"),1300)}
+  const b=l._t,f=$("#f-"+l.id);f.innerHTML='<span class="spin"></span> Sapling is re-checking…';
+  const res=await check(l,l.fix.evidence,"fixed");l._fixed=true;fill(l,res);const a=l._t;$("#r-"+l.id).querySelector(".what div").textContent="Updated: "+l.fix.label.toLowerCase();
+  f.innerHTML=`<span class="flip">After “${esc(l.fix.label.toLowerCase())}”: <s>${b.a} ${(b.p*100).toFixed(0)}%</s> → <b style="color:${a.c==="var(--rev)"?"var(--ink)":a.c}">${a.a}${a.a==="HUMAN REVIEW"?` · leans ${NM[a.lean]} ${(a.p*100).toFixed(0)}%`:` ${(a.p*100).toFixed(0)}%`}</b></span>`}
 
-function summary(){
-  const tot={};report.lines.forEach(l=>{if(l._t)tot[l._t.action]=(tot[l._t.action]||0)+l.amount});
-  const all=report.lines.reduce((a,l)=>a+l.amount,0);
-  const stop=(tot["REJECT"]||0)+(tot["ESCALATE"]||0)+(tot["REQUEST DOCS"]||0);
-  const cols={"REJECT":"#ff8f84","ESCALATE":"#c9a0ff","REQUEST DOCS":"#ffc266","HUMAN REVIEW":"#b8c0cc","APPROVE":"#7fe0ae"};
-  const keys=Object.keys(cols).filter(k=>tot[k]);
-  $("#hero").innerHTML=`<small>Stopped before payment, by Banyan Sapling</small><b>${gbp(stop)}</b>
-   <p>of ${gbp(all)} claimed in ${report.report_id}. ${gbp(tot["HUMAN REVIEW"]||0)} was too close to call and goes to a person.</p>
-   <div class="stack">${keys.map(k=>`<i style="width:${tot[k]/all*100}%;background:${cols[k]}"></i>`).join("")}</div>
-   <div class="leg">${keys.map(k=>`<span style="--c:${cols[k]}">${k} ${gbp(tot[k])}</span>`).join("")}</div>`}
-
-async function check(l,over,which){
-  const body={policy:over?.policy??l.policy,evidence:over?.evidence??l.evidence,claim:over?.claim??l.claim};
-  if(live){try{const r=await fetch("/api/verify",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
-    if(r.ok){const j=await r.json();if(j.probabilities)return j}else if(r.status!==404&&r.status!==405&&r.status!==501)throw 0}catch(e){}
-    live=false;$("#mode").textContent="No backend reachable, showing a recorded Sapling run."}
-  return which==='fixed'?cache[l.id].fixed.sapling:cache[l.id].sapling}
+function sortRows(){const rows=[...report.lines].sort((x,y)=>(RANK[x._t?.a]??9)-(RANK[y._t?.a]??9));rows.forEach(l=>$("#rows").appendChild($("#r-"+l.id)))}
 
 async function runAll(){
-  $("#run").disabled=true;report.lines.forEach(l=>{l._t=null;l._fixed=false;$("#c-"+l.id).classList.add("pending");$("#r-"+l.id).innerHTML='<span class="meta"><span class="spin"></span> asking Sapling…</span>'});
-  summary();
-  await Promise.all(report.lines.map(async l=>{const res=await check(l);fill(l,res)}));
-  $("#run").disabled=false;if(live)$("#mode").textContent="Live: every verdict above came from the Sapling endpoint just now."}
+  $("#run").disabled=true;report.lines.forEach(l=>{l._fixed=false;$("#f-"+l.id).innerHTML="";$("#r-"+l.id).querySelector(".pill").outerHTML='<span class="pill" style="background:var(--line);color:var(--mute)"><span class="spin"></span></span>'});
+  await Promise.all(report.lines.map(async l=>fill(l,await check(l))));sortRows();$("#run").disabled=false;if(live)$("#mode").textContent="Live from the Sapling API"}
 
 (async()=>{
   report=await (await fetch("report.json")).json();
   try{cache=await (await fetch("results.json")).json()}catch(e){cache={}}
-  $("#meta").textContent=`${report.employee} · ${report.report_id} · ${report.trip} · submitted ${report.submitted}`;
-  $("#cards").innerHTML=report.lines.map(card).join("");
-  $("#cards").addEventListener("click",async e=>{if(e.target.dataset.fix)return applyFix(report.lines.find(x=>x.id===e.target.dataset.fix));const id=e.target.dataset.re;if(!id)return;
-    const l=report.lines.find(x=>x.id===id),c=$("#c-"+id),o={};c.querySelectorAll("textarea").forEach(t=>o[t.dataset.k]=t.value);
-    $("#r-"+id).innerHTML='<span class="meta"><span class="spin"></span> asking Sapling…</span>';
-    if(!live){$("#mode").textContent="Editing needs the live backend (python3 server.py).";fill(l,cache[id].sapling);return}
-    fill(l,await check(l,o))});
+  $("#meta").textContent=`Expense Auditor · ${report.report_id}`;
+  $("#rows").innerHTML=report.lines.map(rowHTML).join("");
+  $("#rows").addEventListener("click",e=>{if(e.target.dataset.fix)return applyFix(report.lines.find(x=>x.id===e.target.dataset.fix));if(e.target.closest("button"))return;const r=e.target.closest(".row");if(r)r.classList.toggle("open")});
   $("#run").onclick=runAll;
-  if(cache&&Object.keys(cache).length){report.lines.forEach(l=>cache[l.id]&&fill(l,cache[l.id].sapling));$("#mode").textContent="Showing the last recorded run. Press the button to re-run live."}
-  if(location.search.includes('demo=fixed'))for(const l of report.lines)if(l.fix)await applyFix(l);
+  report.lines.forEach(l=>cache[l.id]&&fill(l,cache[l.id].sapling));sortRows();
+  $("#mode").textContent="Last recorded run";
+  if(location.search.includes("demo=fixed")){for(const l of report.lines)if(l.fix)await applyFix(l);sortRows()}
 })();
 </script>
 </body>
