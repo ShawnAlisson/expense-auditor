@@ -1,0 +1,568 @@
+{
+  "E-01": {
+    "sapling": {
+      "model": "banyan-sapling",
+      "release_stage": "research-preview",
+      "source_release_sha256": "245970b0e5b0b22d64c1434ee21dd221b1f211f06bda5465f8fc108f70cd5c3f",
+      "weights_sha256": "103a67f7a112589346c3e1090f5bca182d7fdafee85dfd43e67ac5d75eb04dd4",
+      "logits": [
+        4.135530471801758,
+        -7.179876804351807,
+        3.675286054611206,
+        -13.85665512084961
+      ],
+      "conformal_prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information",
+        "inconsistent_context"
+      ],
+      "prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information",
+        "inconsistent_context"
+      ],
+      "status": "unsure",
+      "raw_label": "supported",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "status_provenance": "multiple_conformal_labels",
+      "empty_set_policy": "rounded_argmax",
+      "conformal_singleton": false,
+      "probabilities": {
+        "supported": 0.48594931922746754,
+        "violation": 0.05449480854141497,
+        "insufficient_information": 0.4445708219982622,
+        "inconsistent_context": 0.014985050232855356
+      },
+      "usage": {
+        "input_tokens": 94,
+        "generated_tokens": 0
+      },
+      "timing_ms": {
+        "model": 985.5988130002515
+      }
+    },
+    "triage": {
+      "action": "HUMAN REVIEW",
+      "tier": "review",
+      "lean": "supported",
+      "confidence": 0.48594931922746754
+    }
+  },
+  "E-02": {
+    "sapling": {
+      "model": "banyan-sapling",
+      "release_stage": "research-preview",
+      "source_release_sha256": "245970b0e5b0b22d64c1434ee21dd221b1f211f06bda5465f8fc108f70cd5c3f",
+      "weights_sha256": "103a67f7a112589346c3e1090f5bca182d7fdafee85dfd43e67ac5d75eb04dd4",
+      "logits": [
+        -7.5276360511779785,
+        12.124165534973145,
+        -3.252323865890503,
+        -17.069786071777344
+      ],
+      "conformal_prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information"
+      ],
+      "prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information"
+      ],
+      "status": "unsure",
+      "raw_label": "violation",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "status_provenance": "multiple_conformal_labels",
+      "empty_set_policy": "rounded_argmax",
+      "conformal_singleton": false,
+      "probabilities": {
+        "supported": 0.020771342775685733,
+        "violation": 0.9284685492015341,
+        "insufficient_information": 0.04747808331292722,
+        "inconsistent_context": 0.0032820247098527024
+      },
+      "usage": {
+        "input_tokens": 117,
+        "generated_tokens": 0
+      },
+      "timing_ms": {
+        "model": 1018.5305580016575
+      }
+    },
+    "triage": {
+      "action": "REJECT",
+      "tier": "auto",
+      "lean": "violation",
+      "confidence": 0.9284685492015341
+    }
+  },
+  "E-03": {
+    "sapling": {
+      "model": "banyan-sapling",
+      "release_stage": "research-preview",
+      "source_release_sha256": "245970b0e5b0b22d64c1434ee21dd221b1f211f06bda5465f8fc108f70cd5c3f",
+      "weights_sha256": "103a67f7a112589346c3e1090f5bca182d7fdafee85dfd43e67ac5d75eb04dd4",
+      "logits": [
+        4.621579170227051,
+        -8.777539253234863,
+        3.4883666038513184,
+        -14.415750503540039
+      ],
+      "conformal_prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information",
+        "inconsistent_context"
+      ],
+      "prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information",
+        "inconsistent_context"
+      ],
+      "status": "unsure",
+      "raw_label": "supported",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "status_provenance": "multiple_conformal_labels",
+      "empty_set_policy": "rounded_argmax",
+      "conformal_singleton": false,
+      "probabilities": {
+        "supported": 0.5253843841352944,
+        "violation": 0.03937831730902632,
+        "insufficient_information": 0.42200070766256287,
+        "inconsistent_context": 0.013236590893116454
+      },
+      "usage": {
+        "input_tokens": 112,
+        "generated_tokens": 0
+      },
+      "timing_ms": {
+        "model": 1031.0130469952128
+      }
+    },
+    "triage": {
+      "action": "HUMAN REVIEW",
+      "tier": "review",
+      "lean": "supported",
+      "confidence": 0.5253843841352944
+    }
+  },
+  "E-04": {
+    "sapling": {
+      "model": "banyan-sapling",
+      "release_stage": "research-preview",
+      "source_release_sha256": "245970b0e5b0b22d64c1434ee21dd221b1f211f06bda5465f8fc108f70cd5c3f",
+      "weights_sha256": "103a67f7a112589346c3e1090f5bca182d7fdafee85dfd43e67ac5d75eb04dd4",
+      "logits": [
+        -7.287924289703369,
+        11.399889945983887,
+        -3.9132516384124756,
+        -15.265789985656738
+      ],
+      "conformal_prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information",
+        "inconsistent_context"
+      ],
+      "prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information",
+        "inconsistent_context"
+      ],
+      "status": "unsure",
+      "raw_label": "violation",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "status_provenance": "multiple_conformal_labels",
+      "empty_set_policy": "rounded_argmax",
+      "conformal_singleton": false,
+      "probabilities": {
+        "supported": 0.024855734254405137,
+        "violation": 0.9220963325018668,
+        "insufficient_information": 0.04773336440423839,
+        "inconsistent_context": 0.00531456883948964
+      },
+      "usage": {
+        "input_tokens": 108,
+        "generated_tokens": 0
+      },
+      "timing_ms": {
+        "model": 1006.0235359997023
+      }
+    },
+    "triage": {
+      "action": "REJECT",
+      "tier": "auto",
+      "lean": "violation",
+      "confidence": 0.9220963325018668
+    }
+  },
+  "E-05": {
+    "sapling": {
+      "model": "banyan-sapling",
+      "release_stage": "research-preview",
+      "source_release_sha256": "245970b0e5b0b22d64c1434ee21dd221b1f211f06bda5465f8fc108f70cd5c3f",
+      "weights_sha256": "103a67f7a112589346c3e1090f5bca182d7fdafee85dfd43e67ac5d75eb04dd4",
+      "logits": [
+        -8.007568359375,
+        11.363865852355957,
+        -1.9281091690063477,
+        -16.72625732421875
+      ],
+      "conformal_prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information"
+      ],
+      "prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information"
+      ],
+      "status": "unsure",
+      "raw_label": "violation",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "status_provenance": "multiple_conformal_labels",
+      "empty_set_policy": "rounded_argmax",
+      "conformal_singleton": false,
+      "probabilities": {
+        "supported": 0.021383090713760704,
+        "violation": 0.9053753059610452,
+        "insufficient_information": 0.06927973827163839,
+        "inconsistent_context": 0.00396186505355593
+      },
+      "usage": {
+        "input_tokens": 91,
+        "generated_tokens": 0
+      },
+      "timing_ms": {
+        "model": 1002.8535689998535
+      }
+    },
+    "triage": {
+      "action": "REJECT",
+      "tier": "auto",
+      "lean": "violation",
+      "confidence": 0.9053753059610452
+    }
+  },
+  "E-06": {
+    "sapling": {
+      "model": "banyan-sapling",
+      "release_stage": "research-preview",
+      "source_release_sha256": "245970b0e5b0b22d64c1434ee21dd221b1f211f06bda5465f8fc108f70cd5c3f",
+      "weights_sha256": "103a67f7a112589346c3e1090f5bca182d7fdafee85dfd43e67ac5d75eb04dd4",
+      "logits": [
+        -11.002448081970215,
+        -6.3641486167907715,
+        -4.184118747711182,
+        5.271028995513916
+      ],
+      "conformal_prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information",
+        "inconsistent_context"
+      ],
+      "prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information",
+        "inconsistent_context"
+      ],
+      "status": "unsure",
+      "raw_label": "inconsistent_context",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "status_provenance": "multiple_conformal_labels",
+      "empty_set_policy": "rounded_argmax",
+      "conformal_singleton": false,
+      "probabilities": {
+        "supported": 0.03284182395902598,
+        "violation": 0.08052644334527422,
+        "insufficient_information": 0.12274710280086307,
+        "inconsistent_context": 0.7638846298948367
+      },
+      "usage": {
+        "input_tokens": 117,
+        "generated_tokens": 0
+      },
+      "timing_ms": {
+        "model": 1020.909369995934
+      }
+    },
+    "triage": {
+      "action": "ESCALATE",
+      "tier": "auto",
+      "lean": "inconsistent_context",
+      "confidence": 0.7638846298948367
+    }
+  },
+  "E-07": {
+    "sapling": {
+      "model": "banyan-sapling",
+      "release_stage": "research-preview",
+      "source_release_sha256": "245970b0e5b0b22d64c1434ee21dd221b1f211f06bda5465f8fc108f70cd5c3f",
+      "weights_sha256": "103a67f7a112589346c3e1090f5bca182d7fdafee85dfd43e67ac5d75eb04dd4",
+      "logits": [
+        6.961021900177002,
+        -9.647112846374512,
+        4.5683064460754395,
+        -15.887675285339355
+      ],
+      "conformal_prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information",
+        "inconsistent_context"
+      ],
+      "prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information",
+        "inconsistent_context"
+      ],
+      "status": "unsure",
+      "raw_label": "supported",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "status_provenance": "multiple_conformal_labels",
+      "empty_set_policy": "rounded_argmax",
+      "conformal_singleton": false,
+      "probabilities": {
+        "supported": 0.5945449701351131,
+        "violation": 0.023959657384472102,
+        "insufficient_information": 0.37432707782053415,
+        "inconsistent_context": 0.007168294659880789
+      },
+      "usage": {
+        "input_tokens": 103,
+        "generated_tokens": 0
+      },
+      "timing_ms": {
+        "model": 1017.6266399939777
+      }
+    },
+    "triage": {
+      "action": "HUMAN REVIEW",
+      "tier": "review",
+      "lean": "supported",
+      "confidence": 0.5945449701351131
+    }
+  },
+  "E-08": {
+    "sapling": {
+      "model": "banyan-sapling",
+      "release_stage": "research-preview",
+      "source_release_sha256": "245970b0e5b0b22d64c1434ee21dd221b1f211f06bda5465f8fc108f70cd5c3f",
+      "weights_sha256": "103a67f7a112589346c3e1090f5bca182d7fdafee85dfd43e67ac5d75eb04dd4",
+      "logits": [
+        3.587435245513916,
+        -7.8066229820251465,
+        4.24170446395874,
+        -15.077034950256348
+      ],
+      "conformal_prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information",
+        "inconsistent_context"
+      ],
+      "prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information",
+        "inconsistent_context"
+      ],
+      "status": "unsure",
+      "raw_label": "insufficient_information",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "status_provenance": "multiple_conformal_labels",
+      "empty_set_policy": "rounded_argmax",
+      "conformal_singleton": false,
+      "probabilities": {
+        "supported": 0.4400653804769416,
+        "violation": 0.04860449927085699,
+        "insufficient_information": 0.4994141921799609,
+        "inconsistent_context": 0.011915928072240506
+      },
+      "usage": {
+        "input_tokens": 111,
+        "generated_tokens": 0
+      },
+      "timing_ms": {
+        "model": 1010.3636950007058
+      }
+    },
+    "triage": {
+      "action": "HUMAN REVIEW",
+      "tier": "review",
+      "lean": "insufficient_information",
+      "confidence": 0.4994141921799609
+    }
+  },
+  "E-09": {
+    "sapling": {
+      "model": "banyan-sapling",
+      "release_stage": "research-preview",
+      "source_release_sha256": "245970b0e5b0b22d64c1434ee21dd221b1f211f06bda5465f8fc108f70cd5c3f",
+      "weights_sha256": "103a67f7a112589346c3e1090f5bca182d7fdafee85dfd43e67ac5d75eb04dd4",
+      "logits": [
+        -7.127447128295898,
+        9.507584571838379,
+        2.155524253845215,
+        -19.235614776611328
+      ],
+      "conformal_prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information"
+      ],
+      "prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information"
+      ],
+      "status": "unsure",
+      "raw_label": "violation",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "status_provenance": "multiple_conformal_labels",
+      "empty_set_policy": "rounded_argmax",
+      "conformal_singleton": false,
+      "probabilities": {
+        "supported": 0.03119202426480186,
+        "violation": 0.7780480092102368,
+        "insufficient_information": 0.18775918800176555,
+        "inconsistent_context": 0.0030007785231960264
+      },
+      "usage": {
+        "input_tokens": 111,
+        "generated_tokens": 0
+      },
+      "timing_ms": {
+        "model": 1037.5714970068657
+      }
+    },
+    "triage": {
+      "action": "REJECT",
+      "tier": "auto",
+      "lean": "violation",
+      "confidence": 0.7780480092102368
+    }
+  },
+  "E-10": {
+    "sapling": {
+      "model": "banyan-sapling",
+      "release_stage": "research-preview",
+      "source_release_sha256": "245970b0e5b0b22d64c1434ee21dd221b1f211f06bda5465f8fc108f70cd5c3f",
+      "weights_sha256": "103a67f7a112589346c3e1090f5bca182d7fdafee85dfd43e67ac5d75eb04dd4",
+      "logits": [
+        -8.081353187561035,
+        9.93476390838623,
+        -2.5285868644714355,
+        -15.552282333374023
+      ],
+      "conformal_prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information",
+        "inconsistent_context"
+      ],
+      "prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information",
+        "inconsistent_context"
+      ],
+      "status": "unsure",
+      "raw_label": "violation",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "status_provenance": "multiple_conformal_labels",
+      "empty_set_policy": "rounded_argmax",
+      "conformal_singleton": false,
+      "probabilities": {
+        "supported": 0.0272172517673548,
+        "violation": 0.8867204927555858,
+        "insufficient_information": 0.07964341170052401,
+        "inconsistent_context": 0.006418843776535396
+      },
+      "usage": {
+        "input_tokens": 101,
+        "generated_tokens": 0
+      },
+      "timing_ms": {
+        "model": 1004.2725679959403
+      }
+    },
+    "triage": {
+      "action": "REJECT",
+      "tier": "auto",
+      "lean": "violation",
+      "confidence": 0.8867204927555858
+    }
+  },
+  "E-11": {
+    "sapling": {
+      "model": "banyan-sapling",
+      "release_stage": "research-preview",
+      "source_release_sha256": "245970b0e5b0b22d64c1434ee21dd221b1f211f06bda5465f8fc108f70cd5c3f",
+      "weights_sha256": "103a67f7a112589346c3e1090f5bca182d7fdafee85dfd43e67ac5d75eb04dd4",
+      "logits": [
+        -5.253390789031982,
+        -5.950645923614502,
+        10.685853004455566,
+        -13.95821762084961
+      ],
+      "conformal_prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information",
+        "inconsistent_context"
+      ],
+      "prediction_set": [
+        "supported",
+        "violation",
+        "insufficient_information",
+        "inconsistent_context"
+      ],
+      "status": "unsure",
+      "raw_label": "insufficient_information",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "status_provenance": "multiple_conformal_labels",
+      "empty_set_policy": "rounded_argmax",
+      "conformal_singleton": false,
+      "probabilities": {
+        "supported": 0.04190506386452374,
+        "violation": 0.03661954939290793,
+        "insufficient_information": 0.9136903653562705,
+        "inconsistent_context": 0.007785021386297924
+      },
+      "usage": {
+        "input_tokens": 107,
+        "generated_tokens": 0
+      },
+      "timing_ms": {
+        "model": 1007.1079089975683
+      }
+    },
+    "triage": {
+      "action": "REQUEST DOCS",
+      "tier": "auto",
+      "lean": "insufficient_information",
+      "confidence": 0.9136903653562705
+    }
+  }
+}
